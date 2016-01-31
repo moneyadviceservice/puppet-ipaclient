@@ -33,7 +33,7 @@ class ipaclient::sudoers (
     $realm = upcase($domain)
 
     case $::osfamily {
-      RedHat: {
+      'RedHat': {
 
         if ($::operatingsystem == 'Fedora' and
           versioncmp($::operatingsystemrelease, '20') >= 0) {
@@ -52,7 +52,7 @@ class ipaclient::sudoers (
                                 '/etc/sysconfig/network'),
         }
       }
-      Debian: {
+      'Debian': {
         $libsss_sudo_package = 'libsss-sudo'
         $safe_domain = shellquote($domain)
 
